@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import MemoContainer from './components/MemoContainer';
+import { useState } from 'react';
+import SideBar from './components/SideBar';
 import './App.css';
 
 function App() {
+  const [memos, setMemos] = useState([
+    {
+      title: 'Memo1',
+      content: 'This is Memo1',
+      createdAt: 1774533901159,
+      updatedAt: 1774533901159,
+    },
+    {
+      title: 'Memo2',
+      content: 'This is Memo2',
+      createdAt: 1774533993692,
+      updatedAt: 1774533993692,
+    },
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SideBar memos={memos} />
+      <MemoContainer />
     </div>
   );
 }
