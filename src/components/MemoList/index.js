@@ -1,13 +1,23 @@
-import MemoItem from './MemoItem';
+import MemoItem from '../MemoItem';
 
-function MemoList({ memos, setSelectedMemoIndex, selectedMemoIdex }) {
+function MemoList({
+  memos,
+  setSelectedMemoIndex,
+  selectedMemoIdex,
+  deleteMemo,
+}) {
   return (
     <div>
       {memos.map((memo, index) => (
         <MemoItem
           key={index}
-          onClick={() => {
+          onClickItem={() => {
             setSelectedMemoIndex(index);
+          }}
+          onClickDelete={(e) => {
+            deleteMemo(index);
+            e.preventDefault();
+            e.stopPropagation();
           }}
           isSelected={index === selectedMemoIdex}
         >
